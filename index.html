@@ -27,7 +27,7 @@
 <div class="container">
 
 <h1>개인정보처리방침</h1>
-<p class="date">시행일: 2026년 3월 30일 | 최종 수정: 2026년 3월 30일</p>
+<p class="date">시행일: 2026년 3월 30일 | 최종 수정: 2026년 10월 27일</p>
 
 <p><strong>중국어스피킹 코치</strong>(이하 "앱")는 「개인정보 보호법」 제30조에 따라 이용자의 개인정보를 보호하고, 이와 관련한 고충을 신속하고 원활하게 처리하기 위하여 다음과 같이 개인정보처리방침을 수립·공개합니다.</p>
 
@@ -38,8 +38,9 @@
   <tr><td>이메일 주소, 이름(닉네임)</td><td>회원 식별 및 서비스 제공</td><td>소셜 로그인(Google, Apple) 시 자동 수집</td></tr>
   <tr><td>음성 녹음 데이터</td><td>중국어 말하기 시험 연습 및 AI 분석</td><td>앱 내 모의고사 응시 시 사용자 동의 하에 수집</td></tr>
   <tr><td>학습 이력(시험 점수, 레벨, 학습 기록)</td><td>맞춤형 학습 분석 및 통계 제공</td><td>서비스 이용 과정에서 자동 생성</td></tr>
-  <tr><td>결제 정보(거래 ID, 상품 ID)</td><td>인앱결제 처리 및 이용권 지급</td><td>Google Play 결제 시스템을 통해 수집</td></tr>
+  <tr><td>결제 정보(거래 ID, 상품 ID)</td><td>인앱결제 처리 및 이용권 지급</td><td>Google Play 또는 Apple App Store 결제 시스템을 통해 수집</td></tr>
   <tr><td>기기 정보(OS 버전, 앱 버전)</td><td>오류 분석 및 서비스 개선</td><td>앱 실행 시 자동 수집 (Sentry 오류 모니터링)</td></tr>
+  <tr><td>서비스 이용 행동 정보(주요 화면 이동, 마이크 권한 허용 여부, 녹음·업로드 성공 여부, 결제 단계, 앱 버전·OS 버전)</td><td>서비스 개선 및 오류 원인 파악(어느 단계에서 이용이 중단되는지 분석)</td><td>로그인한 상태에서 앱 사용 중 자동 수집 (음성·전사 내용·이름·이메일·정확한 점수는 이 기록에 포함하지 않음)</td></tr>
 </table>
 
 <div class="highlight">
@@ -50,7 +51,7 @@
 <ol>
   <li><strong>서비스 제공:</strong> 회원 인증, 모의고사 응시, AI 분석 결과 제공, 학습 이력 관리</li>
   <li><strong>결제 처리:</strong> 이용권 구매 및 프로모션 코드 적용</li>
-  <li><strong>서비스 개선:</strong> 오류 모니터링(Sentry), 앱 안정성 향상</li>
+  <li><strong>서비스 개선:</strong> 오류 모니터링(Sentry), 앱 안정성 향상, 서비스 이용 행동 분석(화면별 이탈 지점 파악)</li>
   <li><strong>알림 서비스:</strong> 분석 완료 알림, 일일 학습 리마인더 (사용자 설정 시)</li>
 </ol>
 
@@ -65,18 +66,22 @@
 <table>
   <tr><th>위탁 업체</th><th>위탁 업무</th><th>보유 기간</th></tr>
   <tr><td>Supabase Inc.</td><td>사용자 인증 및 데이터베이스 호스팅</td><td>서비스 이용 기간</td></tr>
-  <tr><td>Google LLC (Google Play)</td><td>인앱결제 처리</td><td>거래 완료 후 관련 법령에 따른 기간</td></tr>
-  <tr><td>OpenAI / Anthropic</td><td>AI 음성 분석 (익명화 처리)</td><td>분석 완료 즉시 삭제</td></tr>
+  <tr><td>Google LLC (Google Play)</td><td>인앱결제 처리(Android)</td><td>거래 완료 후 관련 법령에 따른 기간</td></tr>
+  <tr><td>Apple Inc. (App Store)</td><td>인앱결제 처리 및 영수증 검증(iOS)</td><td>거래 완료 후 관련 법령에 따른 기간</td></tr>
+  <tr><td>Microsoft Corporation (Azure AI Speech)</td><td>발음·유창성 평가를 위한 음성 분석(음성 데이터 전송)</td><td>각 업체의 정책에 따름</td></tr>
+  <tr><td>DeepSeek</td><td>답변 내용 채점(음성이 아닌 전사 텍스트 전송)</td><td>각 업체의 정책에 따름</td></tr>
+  <tr><td>OpenAI</td><td>음성 인식 보조(음성 데이터 전송)</td><td>각 업체의 정책에 따름</td></tr>
   <tr><td>Sentry (Functional Software)</td><td>오류 모니터링</td><td>90일</td></tr>
 </table>
 
 <h2>4. 개인정보의 보유 및 이용 기간</h2>
 <ul>
   <li><strong>회원 정보:</strong> 회원 탈퇴 시까지 (탈퇴 후 즉시 파기)</li>
-  <li><strong>음성 녹음 데이터:</strong> AI 분석 완료 후 서버에서 즉시 삭제, 기기 내 임시 파일은 세션 종료 시 삭제</li>
+  <li><strong>음성 녹음 데이터:</strong> 채점 및 학습 기록 확인(다시 듣기)을 위해 서버에 암호화된 저장소로 보관하며, 업로드 후 7일이 지나면 용량 축소를 위해 압축 파일로 변환되고 업로드 후 1년이 지나면 삭제됩니다. 회원 탈퇴 시 즉시 삭제하며, 기기 내 임시 파일은 업로드 완료 후 삭제됩니다.</li>
   <li><strong>학습 이력:</strong> 회원 탈퇴 시까지</li>
   <li><strong>결제 기록:</strong> 「전자상거래 등에서의 소비자보호에 관한 법률」에 따라 5년간 보관</li>
   <li><strong>오류 로그:</strong> 수집 후 90일 이내 자동 삭제</li>
+  <li><strong>서비스 이용 행동 기록:</strong> 수집 후 90일 이내 자동 삭제, 회원 탈퇴 시 즉시 삭제</li>
 </ul>
 
 <h2>5. 개인정보의 파기 절차 및 방법</h2>
@@ -133,23 +138,24 @@
 </ul>
 
 <h2>11. 개인정보처리방침 변경</h2>
-<p>본 개인정보처리방침은 2026년 3월 30일부터 적용됩니다. 법령, 정책, 보안 기술의 변경에 따라 내용이 추가·삭제·수정될 수 있으며, 변경 시 앱 내 공지를 통해 안내합니다.</p>
+<p>본 개인정보처리방침은 2026년 3월 30일부터 적용되며, 2026년 10월 27일에 서비스 이용 행동 기록 항목 추가, 음성 녹음 보관 기간·위탁 업체·결제 수단 표기 현행화 내용이 개정되었습니다. 법령, 정책, 보안 기술의 변경에 따라 내용이 추가·삭제·수정될 수 있으며, 변경 시 앱 내 공지를 통해 안내합니다.</p>
 
 <hr style="margin: 32px 0; border: none; border-top: 1px solid #eee;">
 
 <!-- English Summary for Google Play Review -->
 <h1 style="font-size: 20px;">Privacy Policy (English Summary)</h1>
-<p class="date">Effective: March 30, 2026</p>
+<p class="date">Effective: March 30, 2026 · Last updated: October 27, 2026</p>
 
 <p><strong>TSC Trainer</strong> ("the App") is a Chinese language speaking test preparation app. This privacy policy explains how we collect, use, and protect your personal information.</p>
 
 <h3>Information We Collect</h3>
 <ul>
   <li><strong>Account info:</strong> Email and name via Google/Apple OAuth sign-in</li>
-  <li><strong>Voice recordings:</strong> For AI-powered speaking analysis (deleted after processing)</li>
+  <li><strong>Voice recordings:</strong> For AI-powered speaking analysis and replay in your study history</li>
   <li><strong>Learning data:</strong> Test scores, levels, and study history</li>
-  <li><strong>Purchase data:</strong> Transaction IDs via Google Play Billing</li>
+  <li><strong>Purchase data:</strong> Transaction IDs via Google Play Billing or Apple In-App Purchase</li>
   <li><strong>Device info:</strong> OS version and app version for crash reporting (Sentry)</li>
+  <li><strong>Usage events:</strong> In-app screen navigation, microphone-permission result, recording/upload success, and checkout steps, linked to your account and used only for product analytics. No audio, transcripts, names, emails or exact scores are included.</li>
 </ul>
 
 <h3>How We Use Your Data</h3>
@@ -160,11 +166,12 @@
 </ul>
 
 <h3>Data Sharing</h3>
-<p>We do not sell your data. We share data only with essential service providers: Supabase (authentication/database), Google Play (payments), AI providers (anonymized voice analysis), and Sentry (error monitoring).</p>
+<p>We do not sell your data. We share data only with essential service providers: Supabase (authentication/database), Google Play and Apple (payments), Microsoft Azure AI Speech and OpenAI (voice analysis), DeepSeek (answer scoring from text), and Sentry (error monitoring).</p>
 
 <h3>Data Retention & Deletion</h3>
 <ul>
-  <li>Voice recordings: Deleted immediately after AI analysis</li>
+  <li>Voice recordings: Stored in private storage; converted to compressed files after 7 days and deleted after 1 year, or immediately when you delete your account</li>
+  <li>Usage events: Deleted automatically after 90 days, or on account deletion</li>
   <li>Account data: Retained until account deletion</li>
   <li>You can delete your account and all associated data at any time via Profile > Settings > "Delete Account" in the app.</li>
 </ul>
