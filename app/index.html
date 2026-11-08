@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>앱 받기 - 중국어스피킹 코치</title>
+<meta property="og:title" content="중국어스피킹 코치 - TSC 말하기 연습">
+<meta property="og:description" content="12분이면 내 TSC 예상 등급이 나와요. 가입하면 하프 모의고사 1회 무료.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "SF Pro Text", "Apple SD Gothic Neo", "Pretendard", sans-serif;
+    background: #FAFAF9;
+    color: #1C1917;
+    line-height: 1.6;
+  }
+  .container { max-width: 420px; margin: 0 auto; padding: 56px 24px 64px; text-align: center; }
+  h1 { font-size: 26px; color: #EC5B13; margin-bottom: 8px; }
+  .lead { color: #57534E; font-size: 16px; margin-bottom: 32px; }
+  .status { color: #78716C; font-size: 14px; margin-bottom: 20px; min-height: 22px; }
+  .btn {
+    display: block; width: 100%; padding: 16px; margin-bottom: 12px;
+    border-radius: 14px; font-size: 17px; font-weight: 600; text-decoration: none;
+    border: 1.5px solid #EC5B13;
+  }
+  .btn.primary { background: #EC5B13; color: #FFFFFF; }
+  .btn.secondary { background: #FFFFFF; color: #EC5B13; }
+  .foot { margin-top: 28px; font-size: 13px; color: #A8A29E; }
+  .foot a { color: #A8A29E; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #1C1917; color: #F5F5F4; }
+    .lead { color: #D6D3D1; }
+    .status, .foot, .foot a { color: #A8A29E; }
+    .btn.secondary { background: #292524; }
+  }
+</style>
+</head>
+<body>
+<main class="container">
+  <h1>중국어스피킹 코치</h1>
+  <p class="lead">12분이면 내 TSC 예상 등급이 나와요.<br>가입하면 하프 모의고사 1회가 무료예요.</p>
+  <p class="status" id="status"></p>
+  <a class="btn primary" id="ios" href="https://apps.apple.com/kr/app/id6780887556">App Store에서 받기 (iPhone)</a>
+  <a class="btn secondary" id="android" href="https://play.google.com/store/apps/details?id=com.minchaelaoshi.tsc">Google Play에서 받기 (Android)</a>
+  <p class="foot"><a href="../support.html">고객 지원</a> · <a href="../index.html">개인정보처리방침</a></p>
+</main>
+<script>
+  // One link for Instagram bio / blog: iPhone → App Store, Android → Google Play.
+  // ?src=<channel> (e.g. instagram, naver) tags the store link so store reports show where installs came from.
+  (function () {
+    var APP_STORE = "https://apps.apple.com/kr/app/id6780887556";
+    var PLAY = "https://play.google.com/store/apps/details?id=com.minchaelaoshi.tsc";
+    var params = new URLSearchParams(location.search);
+    var clean = function (v, d) { return /^[a-z0-9_-]{1,30}$/i.test(v || "") ? v.toLowerCase() : d; };
+    var src = clean(params.get("src"), "direct");
+    var campaign = clean(params.get("c"), "link");
+
+    // App Store campaign token (ct) and Google Play install referrer (UTM).
+    var ios = APP_STORE + "?ct=" + encodeURIComponent(src + "_" + campaign);
+    var android = PLAY + "&referrer=" + encodeURIComponent(
+      "utm_source=" + src + "&utm_medium=social&utm_campaign=" + campaign);
+    document.getElementById("ios").href = ios;
+    document.getElementById("android").href = android;
+
+    var ua = navigator.userAgent || "";
+    var isIOS = /iPhone|iPad|iPod/i.test(ua) ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1); // iPadOS desktop mode
+    var isAndroid = /Android/i.test(ua);
+    var status = document.getElementById("status");
+    if (isIOS || isAndroid) {
+      status.textContent = "스토어로 이동하고 있어요…";
+      location.replace(isIOS ? ios : android);
+      // If the in-app browser blocks the jump, the buttons above still work.
+      setTimeout(function () { status.textContent = "이동하지 않으면 아래 버튼을 눌러 주세요."; }, 2500);
+    } else {
+      status.textContent = "휴대폰에서 열면 스토어로 바로 이동해요.";
+    }
+  })();
+</script>
+</body>
+</html>
